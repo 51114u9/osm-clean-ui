@@ -6,6 +6,7 @@
 // @include		http://www.openstreetmap.org/*
 // @exclude		http://www.openstreetmap.org/diary*
 // @exclude		http://www.openstreetmap.org/traces*
+// @exclude		http://www.openstreetmap.org/edit*
 // @exclude		http://www.openstreetmap.org/history*
 // @exclude		http://www.openstreetmap.org/browse*
 // @exclude		http://www.openstreetmap.org/user*
@@ -13,12 +14,13 @@
 // @include		http://openstreetmap.org/*
 // @exclude		http://openstreetmap.org/diary*
 // @exclude		http://openstreetmap.org/traces*
+// @exclude		http://openstreetmap.org/edit*
 // @exclude		http://openstreetmap.org/history*
 // @exclude		http://openstreetmap.org/browse*
 // @exclude		http://openstreetmap.org/user*
 
 // @license		BSD License; http://www.opensource.org/licenses/bsd-license.php
-// @version		0.1
+// @version		0.1.1
 
 // ==/UserScript==
 
