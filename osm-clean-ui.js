@@ -10,6 +10,7 @@
 // @exclude		http://www.openstreetmap.org/history*
 // @exclude		http://www.openstreetmap.org/browse*
 // @exclude		http://www.openstreetmap.org/user*
+// @exclude		http://www.openstreetmap.org/message*
 
 // @include		http://openstreetmap.org/*
 // @exclude		http://openstreetmap.org/diary*
@@ -18,9 +19,10 @@
 // @exclude		http://openstreetmap.org/history*
 // @exclude		http://openstreetmap.org/browse*
 // @exclude		http://openstreetmap.org/user*
+// @exclude		http://openstreetmap.org/message*
 
 // @license		BSD License; http://www.opensource.org/licenses/bsd-license.php
-// @version		0.1.1
+// @version		0.1.2
 
 // ==/UserScript==
 
