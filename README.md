@@ -1,7 +1,7 @@
 
 # OpenStreetMap Clean UI
 
-![screenshot](https://github.com/51114u9/osm-clean-ui/raw/master/screenshot.png)
+![screenshot](https://github.com/51114u9/osm-clean-ui/raw/master/screenshot.jpg)
 
 ## Description
 
