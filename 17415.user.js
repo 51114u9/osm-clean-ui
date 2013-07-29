@@ -4,17 +4,15 @@
 // @description	Remove unnecessary elements and modernize UI on OpenStreetMap
 
 // @include		http://www.openstreetmap.org/*
-// @exclude		http://www.openstreetmap.org/edit*
-// @exclude		http://www.openstreetmap.org/traces*
-// @exclude		http://www.openstreetmap.org/user/*/traces
+// @include		https://www.openstreetmap.org/login*
+// @include		https://www.openstreetmap.org/user*
 
 // @include		http://openstreetmap.org/*
-// @exclude		http://openstreetmap.org/edit*
-// @exclude		http://openstreetmap.org/traces*
-// @exclude		http://openstreetmap.org/user/*/traces
+// @include		https://openstreetmap.org/login*
+// @include		https://openstreetmap.org/user*
 
 // @license		BSD License; http://www.opensource.org/licenses/bsd-license.php
-// @version		0.2
+// @version		0.2.1
 
 // ==/UserScript==
 
@@ -55,6 +53,10 @@ function addGlobalStyle(css) {
 
 function loadGlobalCSS() {
 	addGlobalStyle(
+		'#greeting { margin-right: 5px !important; padding-top: 0px !important; }' +
+		'ul.secondary-actions li { margin-right: 5px !important; }' +
+		'#greeting a, #greeting a:link, #greeting a:visited { color: #333 !important; float: left !important; font-weight: bold !important; margin-right: 1px !important; padding: 3px 10px !important; text-decoration: none !important; }' +
+		'#greeting a:link:hover, #greeting a:visited:hover { text-decoration: underline !important; }' +
 		'#searchbox { background: rgba(255,255,255,.8); position: absolute; bottom: 50px; left: 50px !important; width: auto; height: auto; margin: 0px !important; padding: 10px !important; border-radius: 4px; -webkit-border-radius: 4px; box-shadow: 0 1px 7px 0px rgba(0,0,0,0.8); -webkit-box-shadow: 0 1px 7px 0px rgba(0,0,0,0.8); z-index:9999; }' +
 		'#search_form { width: 200px !important; }' +
 		'#search_field input[type="submit"] { width: 20px !important; height: 20px !important; }' +
@@ -62,7 +64,14 @@ function loadGlobalCSS() {
 		'#search_field input[type="text"]:focus { outline: 0; box-shadow: 0 0 2px rgba(0,0,0,.8) inset; }' +
 		'#query { width: 200px !important; height: 30px !important; }' +
 		'#top-bar { background: rgba(255,255,255,.8); margin-left: 0px !important; }' +
-		'#editmenu { left: 47px !important; }' +
+		'.menu li { border-top: none !important; padding: 0px !important; }' +
+		'#editmenu { left: 87px !important; }' +
+		'#editmenu a, #editmenu a:link, #editmenu a:visited,' +
+		'#communitymenu a, #communitymenu a:link, #communitymenu a:visited,' +
+		'#helpmenu a, #helpmenu a:link, #helpmenu a:visited { color: #333 !important; float: left !important; font-weight: bold !important; margin-right: 1px !important; padding: 3px 10px !important; text-decoration: none !important; }' +
+		'#editmenu a:link:hover, #editmenu a:visited:hover,' +
+		'#communitymenu a:link:hover, #communitymenu a:visited:hover,' +
+		'#helpmenu a:link:hover, #helpmenu a:visited:hover { text-decoration: underline !important; }' +
 		'.wrapper { margin-left: 0px !important; }' +
 		'#content { left: 0px !important; }' +
 		'.diary_post { max-width: 100% !important; }'
@@ -104,10 +113,11 @@ function findAndFixSearch() {
 			break;
 		}
 	}
+
 	if (elmSearchBox) {
 		elmSearchBox.setAttribute('id','searchbox');
 		elmSearchBox.removeChild(elmSearchBox.lastElementChild);
-	 }
+	}
 }
 
 function findAndFixCommunity() {
@@ -172,6 +182,6 @@ function findAndFixHelp() {
 }
 
 function removeLeftMenu() {
-	if (elmSearchBox) { elmLeft.parentNode.replaceChild(elmSearchBox, elmLeft); }
+	if (elmSearchBox && (elmSearchBox.firstElementChild.nodeName != 'H4')) { elmLeft.parentNode.replaceChild(elmSearchBox, elmLeft); }
 	else { elmLeft.parentNode.removeChild(elmLeft); }
 }
