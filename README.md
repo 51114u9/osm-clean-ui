@@ -11,7 +11,7 @@ Remove unnecessary elements and modernize UI on OpenStreetMap.
 
 1. You need install the add-on or extension for your modern browser Firefox
    [GreaseMonkey](http://mzl.la/1aQPQ9p), Opera [ViolentMonkey](http://bit.ly/15pmpZV),
-   Chrome (and related) [TamperMonkey](http://bit.ly/19r15Yf) and IE ???
+   Chrome [TamperMonkey](http://bit.ly/19r15Yf) and IE ???
 
 2. Go to [OpenStreetMap Clean UI](http://bit.ly/17Nee9Y) script website
 

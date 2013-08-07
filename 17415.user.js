@@ -12,7 +12,7 @@
 // @include		https://openstreetmap.org/user*
 
 // @license		BSD License; http://www.opensource.org/licenses/bsd-license.php
-// @version		0.2.1
+// @version		0.2.2
 
 // ==/UserScript==
 
@@ -29,6 +29,7 @@ loadGlobalCSS();
 findMenus();
 findAndFixLogo();
 findAndFixSearch();
+findAndFixData();
 findAndFixCommunity();
 findAndFixHelp();
 removeLeftMenu();
@@ -67,9 +68,11 @@ function loadGlobalCSS() {
 		'.menu li { border-top: none !important; padding: 0px !important; }' +
 		'#editmenu { left: 87px !important; }' +
 		'#editmenu a, #editmenu a:link, #editmenu a:visited,' +
+		'#datamenu a, #datamenu a:link, #datamenu a:visited,' +
 		'#communitymenu a, #communitymenu a:link, #communitymenu a:visited,' +
 		'#helpmenu a, #helpmenu a:link, #helpmenu a:visited { color: #333 !important; float: left !important; font-weight: bold !important; margin-right: 1px !important; padding: 3px 10px !important; text-decoration: none !important; }' +
 		'#editmenu a:link:hover, #editmenu a:visited:hover,' +
+		'#datamenu a:link:hover, #datamenu a:visited:hover,' +
 		'#communitymenu a:link:hover, #communitymenu a:visited:hover,' +
 		'#helpmenu a:link:hover, #helpmenu a:visited:hover { text-decoration: underline !important; }' +
 		'.wrapper { margin-left: 0px !important; }' +
@@ -120,10 +123,39 @@ function findAndFixSearch() {
 	}
 }
 
+function findAndFixData() {
+	var elmData = elmLeftMenu.children[2].firstElementChild.innerHTML;
+	var elmDataMenuContent1 = elmLeftMenu.children[2].children[1];
+	var elmDataMenuContent2 = elmLeftMenu.children[2].children[2];
+
+	var elmDataAnchor = document.createElement('li');
+	elmDataAnchor.innerHTML = '<a id="dataanchor" title="' + elmData + '" href="#">' +
+		elmData + '<span class="menuicon">▼</span>' +
+		'</a>';
+
+	elmTabNav.appendChild(elmDataAnchor);
+
+	var elmDataMenu = document.createElement('div');
+	elmDataMenu.id = 'datamenu';
+	elmDataMenu.className = 'menu';
+	elmDataMenu.appendChild(elmDataMenuContent1);
+	elmDataMenu.appendChild(elmDataMenuContent2);
+
+	var elmEditMenu = document.getElementById('editmenu');
+	if (!elmEditMenu) { return; }
+
+	elmEditMenu.parentNode.insertBefore(elmDataMenu, elmEditMenu.nextSibling);
+
+	var elmJavaScript = document.createElement('script');
+	elmJavaScript.type = 'text/javascript';
+	elmJavaScript.innerHTML = 'createMenu("dataanchor", "datamenu", "left");';
+
+	elmDataMenu.parentNode.insertBefore(elmJavaScript, elmDataMenu.nextSibling);
+}
+
 function findAndFixCommunity() {
 	var elmCommunity = elmLeftMenu.children[1].firstElementChild.innerHTML;
-	var elmCommunityMenuContent1 = elmLeftMenu.children[1].lastElementChild;
-	var elmCommunityMenuContent2 = elmLeftMenu.lastElementChild.firstElementChild.innerHTML;
+	var elmCommunityMenuContent = elmLeftMenu.children[1].lastElementChild;
 
 	var elmCommunityAnchor = document.createElement('li');
 	elmCommunityAnchor.innerHTML = '<a id="communityanchor" title="' + elmCommunity + '" href="#">' +
@@ -135,11 +167,7 @@ function findAndFixCommunity() {
 	var elmCommunityMenu = document.createElement('div');
 	elmCommunityMenu.id = 'communitymenu';
 	elmCommunityMenu.className = 'menu';
-	elmCommunityMenu.appendChild(elmCommunityMenuContent1);
-
-	var elmUlCommunityMenuContent = document.createElement('ul');
-	elmUlCommunityMenuContent.innerHTML = '<li>' + elmCommunityMenuContent2 + '</li>';
-	elmCommunityMenu.appendChild(elmUlCommunityMenuContent);
+	elmCommunityMenu.appendChild(elmCommunityMenuContent);
 
 	var elmEditMenu = document.getElementById('editmenu');
 	if (!elmEditMenu) { return; }
@@ -154,8 +182,8 @@ function findAndFixCommunity() {
 }
 
 function findAndFixHelp() {
-	var elmHelp = elmLeftMenu.firstElementChild.firstElementChild.innerHTML;
-	var elmHelpMenuContent = elmLeftMenu.firstElementChild.lastElementChild;
+	var elmHelp = elmLeftMenu.children[0].firstElementChild.innerHTML;
+	var elmHelpMenuContent = elmLeftMenu.children[0].lastElementChild;
 
 	var elmHelpAnchor = document.createElement('li');
 	elmHelpAnchor.innerHTML = '<a id="helpanchor" title="' + elmHelp + '" href="#">' +
