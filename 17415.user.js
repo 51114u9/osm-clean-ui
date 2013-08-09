@@ -12,7 +12,7 @@
 // @include		https://openstreetmap.org/user*
 
 // @license		BSD License; http://www.opensource.org/licenses/bsd-license.php
-// @version		0.2.3
+// @version		0.2.4
 
 // ==/UserScript==
 
@@ -73,7 +73,7 @@ function loadGlobalCSS() {
 		'#datamenu a:link:hover, #datamenu a:visited:hover,' +
 		'#communitymenu a:link:hover, #communitymenu a:visited:hover,' +
 		'#helpmenu a:link:hover, #helpmenu a:visited:hover { color: #000 !important; text-decoration: none !important; } ' +
-		'.wrapper { margin-left: 0px !important; } ' +
+		'.wrapper { margin-left: 0px !important; padding: 0 150px !important; } ' +
 		'#content { left: 0px !important; } ' +
 		'.diary_post { max-width: 100% !important; } ' +
 		'#message_title { width: 50% !important; }'
@@ -130,6 +130,7 @@ function findAndFixData() {
 	var elmData = elmLeftMenu.children[2].firstElementChild.innerHTML;
 	var elmDataMenuContent1 = elmLeftMenu.children[2].children[1];
 	var elmDataMenuContent2 = elmLeftMenu.children[2].children[2];
+	var elmDataMenuContent3 = elmLeftMenu.children[2].children[3];
 
 	var elmDataAnchor = document.createElement('li');
 	elmDataAnchor.innerHTML = '<a id="dataanchor" title="' + elmData + '" href="#">' +
@@ -143,6 +144,7 @@ function findAndFixData() {
 	elmDataMenu.className = 'menu';
 	elmDataMenu.appendChild(elmDataMenuContent1);
 	elmDataMenu.appendChild(elmDataMenuContent2);
+	elmDataMenu.appendChild(elmDataMenuContent3);
 
 	var elmEditMenu = document.getElementById('editmenu');
 	if (!elmEditMenu) { return; }
