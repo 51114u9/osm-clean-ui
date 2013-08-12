@@ -12,7 +12,7 @@
 // @include		https://openstreetmap.org/user*
 
 // @license		BSD License; http://www.opensource.org/licenses/bsd-license.php
-// @version		0.2.4
+// @version		0.2.5
 
 // ==/UserScript==
 
@@ -28,7 +28,6 @@ loadPrintCSS();
 
 // Execute
 findMenus();
-findAndFixLogo();
 findAndFixSearch();
 findAndFixData();
 findAndFixCommunity();
@@ -49,39 +48,45 @@ function addGlobalStyle(device, css) {
 
 function loadGlobalCSS() {
 	addGlobalStyle('screen',
-		'#searchbox { background: rgba(255,255,255,.8); position: absolute; bottom: 50px; left: 50px !important; width: auto; height: auto; margin: 0px !important; padding: 10px !important; border-radius: 4px; -webkit-border-radius: 4px; box-shadow: 0 1px 7px 0px rgba(0,0,0,0.8); -webkit-box-shadow: 0 1px 7px 0px rgba(0,0,0,0.8); z-index:9999; } ' +
+		'#small-title { background-color: #EEEEEE !important; border-bottom: 1px solid #CCCCCC !important; display: inline-block !important; font-size: 14px !important; height: 30px !important; margin: 0px !important; padding-top: 7px !important; position: fixed !important; text-align: center !important; top: 0 !important; width: 185px !important; z-index: 1 !important; } ' +
+		'#searchbox { background: rgba(255,255,255,.8); position: absolute; bottom: 45px !important; left: 10px !important; width: auto; height: auto; margin: 0px !important; padding: 3px 4px !important; position: fixed; border-radius: 2px !important; -webkit-border-radius: 2px !important; box-shadow: 0 0 3px 0 rgba(0,0,0,0.8) !important; -webkit-box-shadow: 0 0 3px 0 rgba(0,0,0,0.8) !important; z-index:9999; } ' +
 		'#search_form { width: 200px !important; } ' +
-		'#search_field input[type="submit"] { width: 20px !important; height: 20px !important; } ' +
-		'#search_field input[type="text"] { background: rgba(238,238,236,.8); border: 0 !important; border-radius: 4px; -webkit-border-radius: 4px; } ' +
+		'#search_field input[type="submit"] { margin-top: 2px !important; height: 20px !important; width: 15px !important; } ' +
+		'#search_field input[type="text"] { background: rgba(238,238,236,.8); border: 0 !important; border-radius: 2px !important; -webkit-border-radius: 2px !important; } ' +
 		'#search_field input[type="text"]:focus { outline: 0; box-shadow: 0 0 2px rgba(0,0,0,.8) inset; } ' +
 		'#query { width: 200px !important; height: 30px !important; } ' +
-		'#top-bar { background: rgba(255,255,255,.8); margin-left: 0px !important; } ' +
+		'#top-bar { background: rgba(255,255,255,.8); } ' +
+		'.changeset #top-bar, .browse #top-bar, .site-copyright #top-bar, .trace #top-bar, .diary_entry #top-bar, .user #top-bar, .notes #top-bar, .oauth_clients #top-bar, .message #top-bar { left: 0; position: fixed; right: 0; top: 0; } ' +
 		'#greeting { margin-right: 0px !important; padding-top: 0px !important; } ' +
 		'ul.secondary-actions li { margin: 0px !important; padding: 0px 2px !important; } ' +
-		'#greeting a, #greeting a:link, #greeting a:visited { color: #333 !important; float: left !important; font-weight: bold !important; margin-right: 0px !important; padding: 3px 5px !important; text-decoration: none !important; } ' +
-		'#greeting a:link:hover, #greeting a:visited:hover { color: #000 !important; text-decoration: none !important; } ' +
+		'#greeting a, #greeting a:link, #greeting a:visited { color: #333 !important; float: left !important; font-weight: bold !important; margin-right: 0px !important; padding: 3px 5px !important; } ' +
+		'#greeting a:link:hover, #greeting a:visited:hover { color: #000 !important; } ' +
 		'span.count-number { background: none repeat scroll 0 0 #CB4437 !important; color: #FFFFFF !important; } ' +
 		'#tabnav a, #tabnav a:link, #tabnav a:visited { color: #333 !important; margin-right: 0px !important; padding: 3px 5px !important; } ' +
-		'#tabnav a:link:hover, #tabnav a:visited:hover { color: #000 !important; text-decoration: none !important; } ' +
+		'#tabnav a:link:hover, #tabnav a:visited:hover { color: #000 !important; } ' +
 		'.menu li { border-top: none !important; padding: 0px !important; } ' +
 		'#editmenu { left: 87px !important; } ' +
 		'#editmenu a, #editmenu a:link, #editmenu a:visited,' +
 		'#datamenu a, #datamenu a:link, #datamenu a:visited,' +
 		'#communitymenu a, #communitymenu a:link, #communitymenu a:visited,' +
-		'#helpmenu a, #helpmenu a:link, #helpmenu a:visited { color: #333 !important; float: left !important; font-weight: bold !important; margin-right: 0px !important; padding: 3px 5px !important; text-decoration: none !important; } ' +
+		'#helpmenu a, #helpmenu a:link, #helpmenu a:visited { color: #333 !important; float: left !important; font-weight: bold !important; margin-right: 0px !important; padding: 3px 5px !important; } ' +
 		'#editmenu a:link:hover, #editmenu a:visited:hover,' +
 		'#datamenu a:link:hover, #datamenu a:visited:hover,' +
 		'#communitymenu a:link:hover, #communitymenu a:visited:hover,' +
-		'#helpmenu a:link:hover, #helpmenu a:visited:hover { color: #000 !important; text-decoration: none !important; } ' +
-		'.wrapper { margin-left: 0px !important; padding: 0 150px !important; } ' +
+		'#helpmenu a:link:hover, #helpmenu a:visited:hover { color: #000 !important; } ' +
+		'.wrapper { margin: 30px 0 0 !important; } ' +
 		'#content { left: 0px !important; } ' +
+		'#changeset_list_map_wrapper.scrolled { top: 20px !important; } ' +
+		'#changeset_list_map_wrapper.scrolled #changeset_list_map { margin-left: 0px !important; } ' +
+		'.sidebar_heading { z-index: 1 !important; } ' +
 		'.diary_post { max-width: 100% !important; } ' +
+		'#diary_entry_title { width: 50% !important; } ' +
 		'#message_title { width: 50% !important; }'
 	 );
 }
 
 function loadPrintCSS() {
-    addGlobalStyle('print', '#searchbox { display: none !important; }');
+	addGlobalStyle('print', '#searchbox { display: none !important; }');
 }
 
 function findMenus() {
@@ -93,23 +98,6 @@ function findMenus() {
 
 	elmTabNav = document.getElementById('tabnav');
 	if (!elmTabNav) { return; }
-}
-
-function findAndFixLogo() {
-	var elmSmallTitle = document.getElementById('small-title');
-	if (!elmSmallTitle) { return; }
-
-	var elmA = elmSmallTitle.firstElementChild;
-	elmA.title = 'OpenStreetMap';
-
-	var elmImg = elmA.firstElementChild;
-	elmImg.width = '24';
-	elmImg.height = '24';
-
-	var elmLi = document.createElement('li');
-	elmLi.appendChild(elmA);
-
-	elmTabNav.firstElementChild.parentNode.insertBefore(elmLi, elmTabNav.firstElementChild);
 }
 
 function findAndFixSearch() {
@@ -133,9 +121,7 @@ function findAndFixData() {
 	var elmDataMenuContent3 = elmLeftMenu.children[2].children[3];
 
 	var elmDataAnchor = document.createElement('li');
-	elmDataAnchor.innerHTML = '<a id="dataanchor" title="' + elmData + '" href="#">' +
-		elmData + '<span class="menuicon">▼</span>' +
-		'</a>';
+	elmDataAnchor.innerHTML = '<a id="dataanchor" title="' + elmData + '" href="#">' + elmData + '<span class="menuicon">▼</span></a>';
 
 	elmTabNav.appendChild(elmDataAnchor);
 
@@ -163,9 +149,7 @@ function findAndFixCommunity() {
 	var elmCommunityMenuContent = elmLeftMenu.children[1].lastElementChild;
 
 	var elmCommunityAnchor = document.createElement('li');
-	elmCommunityAnchor.innerHTML = '<a id="communityanchor" title="' + elmCommunity + '" href="#">' +
-		elmCommunity + '<span class="menuicon">▼</span>' +
-		'</a>';
+	elmCommunityAnchor.innerHTML = '<a id="communityanchor" title="' + elmCommunity + '" href="#">' + elmCommunity + '<span class="menuicon">▼</span></a>';
 
 	elmTabNav.appendChild(elmCommunityAnchor);
 
@@ -191,9 +175,7 @@ function findAndFixHelp() {
 	var elmHelpMenuContent = elmLeftMenu.children[0].lastElementChild;
 
 	var elmHelpAnchor = document.createElement('li');
-	elmHelpAnchor.innerHTML = '<a id="helpanchor" title="' + elmHelp + '" href="#">' +
-		elmHelp + '<span class="menuicon">▼</span>' +
-		'</a>';
+	elmHelpAnchor.innerHTML = '<a id="helpanchor" title="' + elmHelp + '" href="#">' + elmHelp + '<span class="menuicon">▼</span></a>';
 
 	elmTabNav.appendChild(elmHelpAnchor);
 
@@ -215,6 +197,6 @@ function findAndFixHelp() {
 }
 
 function removeLeftMenu() {
-	if (elmSearchBox && (elmSearchBox.firstElementChild.nodeName != 'H4')) { elmLeft.parentNode.replaceChild(elmSearchBox, elmLeft); }
+	if (elmSearchBox && (getComputedStyle(elmLeft, '').display != 'none') && (elmSearchBox.firstElementChild.nodeName != 'H4')) { elmLeft.parentNode.replaceChild(elmSearchBox, elmLeft); }
 	else { elmLeft.parentNode.removeChild(elmLeft); }
 }

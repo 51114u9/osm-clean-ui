@@ -23,7 +23,6 @@ Remove unnecessary elements and modernize UI on OpenStreetMap.
 ## ToDo
 
 * Display trace labels as part of the page
-* Hide the search box on the edit page
 
 Enjoy!
 
