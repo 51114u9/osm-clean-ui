@@ -12,7 +12,7 @@
 // @include		https://openstreetmap.org/user*
 
 // @license		BSD License; http://www.opensource.org/licenses/bsd-license.php
-// @version		0.2.5
+// @version		0.2.6
 
 // ==/UserScript==
 
@@ -78,7 +78,7 @@ function loadGlobalCSS() {
 		'#content { left: 0px !important; } ' +
 		'#changeset_list_map_wrapper.scrolled { top: 20px !important; } ' +
 		'#changeset_list_map_wrapper.scrolled #changeset_list_map { margin-left: 0px !important; } ' +
-		'.sidebar_heading { z-index: 1 !important; } ' +
+		'.sidebar_heading { z-index: inherit !important; } ' +
 		'.diary_post { max-width: 100% !important; } ' +
 		'#diary_entry_title { width: 50% !important; } ' +
 		'#message_title { width: 50% !important; }'
