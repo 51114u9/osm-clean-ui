@@ -12,7 +12,7 @@
 // @include		https://openstreetmap.org/user*
 
 // @license		BSD License; http://www.opensource.org/licenses/bsd-license.php
-// @version		0.2.6
+// @version		0.2.7
 
 // ==/UserScript==
 
@@ -48,41 +48,30 @@ function addGlobalStyle(device, css) {
 
 function loadGlobalCSS() {
 	addGlobalStyle('screen',
-		'#small-title { background-color: #EEEEEE !important; border-bottom: 1px solid #CCCCCC !important; display: inline-block !important; font-size: 14px !important; height: 30px !important; margin: 0px !important; padding-top: 7px !important; position: fixed !important; text-align: center !important; top: 0 !important; width: 185px !important; z-index: 1 !important; } ' +
-		'#searchbox { background: rgba(255,255,255,.8); position: absolute; bottom: 45px !important; left: 10px !important; width: auto; height: auto; margin: 0px !important; padding: 3px 4px !important; position: fixed; border-radius: 2px !important; -webkit-border-radius: 2px !important; box-shadow: 0 0 3px 0 rgba(0,0,0,0.8) !important; -webkit-box-shadow: 0 0 3px 0 rgba(0,0,0,0.8) !important; z-index:9999; } ' +
+		'#small-title { background-color: #EEEEEE !important; border-bottom: 1px solid #CCCCCC !important; display: inline-block !important; font-size: 14px !important; height: 30px !important; margin: 0px !important; padding-top: 7px !important; position: fixed !important; text-align: center !important; top: 0 !important; width: 185px !important; z-index: 1001 !important; } ' +
+		'#searchbox { background: rgba(255, 255, 255, 0.8); position: absolute; bottom: 45px !important; left: 10px !important; width: auto; height: auto; margin: 0px !important; padding: 3px 4px !important; position: fixed; border-radius: 2px !important; -webkit-border-radius: 2px !important; box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.8) !important; -webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.8) !important; z-index:9999; } ' +
 		'#search_form { width: 200px !important; } ' +
 		'#search_field input[type="submit"] { margin-top: 2px !important; height: 20px !important; width: 15px !important; } ' +
-		'#search_field input[type="text"] { background: rgba(238,238,236,.8); border: 0 !important; border-radius: 2px !important; -webkit-border-radius: 2px !important; } ' +
-		'#search_field input[type="text"]:focus { outline: 0; box-shadow: 0 0 2px rgba(0,0,0,.8) inset; } ' +
+		'#search_field input[type="text"] { background: rgba(238, 238, 236, 0.8); border: 0 !important; border-radius: 2px !important; -webkit-border-radius: 2px !important; } ' +
+		'#search_field input[type="text"]:focus { outline: 0; box-shadow: 0 0 2px rgba(0, 0, 0, 0.8) inset; } ' +
 		'#query { width: 200px !important; height: 30px !important; } ' +
-		'#top-bar { background: rgba(255,255,255,.8); } ' +
+		'#top-bar { background: rgba(255, 255, 255, 0.8); } ' +
 		'.changeset #top-bar, .browse #top-bar, .site-copyright #top-bar, .trace #top-bar, .diary_entry #top-bar, .user #top-bar, .notes #top-bar, .oauth_clients #top-bar, .message #top-bar { left: 0; position: fixed; right: 0; top: 0; } ' +
-		'#greeting { margin-right: 0px !important; padding-top: 0px !important; } ' +
+		'ul#greeting { margin-right: 0px !important; padding-top: 0px !important; } ' +
 		'ul.secondary-actions li { margin: 0px !important; padding: 0px 2px !important; } ' +
-		'#greeting a, #greeting a:link, #greeting a:visited { color: #333 !important; float: left !important; font-weight: bold !important; margin-right: 0px !important; padding: 3px 5px !important; } ' +
-		'#greeting a:link:hover, #greeting a:visited:hover { color: #000 !important; } ' +
-		'span.count-number { background: none repeat scroll 0 0 #CB4437 !important; color: #FFFFFF !important; } ' +
-		'#tabnav a, #tabnav a:link, #tabnav a:visited { color: #333 !important; margin-right: 0px !important; padding: 3px 5px !important; } ' +
-		'#tabnav a:link:hover, #tabnav a:visited:hover { color: #000 !important; } ' +
-		'.menu li { border-top: none !important; padding: 0px !important; } ' +
-		'#editmenu { left: 87px !important; } ' +
-		'#editmenu a, #editmenu a:link, #editmenu a:visited,' +
-		'#datamenu a, #datamenu a:link, #datamenu a:visited,' +
-		'#communitymenu a, #communitymenu a:link, #communitymenu a:visited,' +
-		'#helpmenu a, #helpmenu a:link, #helpmenu a:visited { color: #333 !important; float: left !important; font-weight: bold !important; margin-right: 0px !important; padding: 3px 5px !important; } ' +
-		'#editmenu a:link:hover, #editmenu a:visited:hover,' +
-		'#datamenu a:link:hover, #datamenu a:visited:hover,' +
-		'#communitymenu a:link:hover, #communitymenu a:visited:hover,' +
-		'#helpmenu a:link:hover, #helpmenu a:visited:hover { color: #000 !important; } ' +
+		'ul#greeting a, ul#greeting a:link, ul#greeting a:visited { color: #333 !important; float: left !important; font-weight: bold !important; margin-right: 0px !important; padding: 3px 5px !important; } ' +
+		'ul#greeting a:link:hover, ul#greeting a:visited:hover { color: #000 !important; } ' +
+		'.count-number { background: none repeat scroll 0 0 #CB4437 !important; color: #FFFFFF !important; } ' +
 		'.wrapper { margin: 30px 0 0 !important; } ' +
 		'#content { left: 0px !important; } ' +
 		'#changeset_list_map_wrapper.scrolled { top: 20px !important; } ' +
 		'#changeset_list_map_wrapper.scrolled #changeset_list_map { margin-left: 0px !important; } ' +
 		'.sidebar_heading { z-index: inherit !important; } ' +
+		'#trace_description, #trace_tagstring { width: 50% !important; } ' +
 		'.diary_post { max-width: 100% !important; } ' +
 		'#diary_entry_title { width: 50% !important; } ' +
 		'#message_title { width: 50% !important; }'
-	 );
+	);
 }
 
 function loadPrintCSS() {
@@ -115,85 +104,99 @@ function findAndFixSearch() {
 }
 
 function findAndFixData() {
-	var elmData = elmLeftMenu.children[2].firstElementChild.innerHTML;
-	var elmDataMenuContent1 = elmLeftMenu.children[2].children[1];
-	var elmDataMenuContent2 = elmLeftMenu.children[2].children[2];
-	var elmDataMenuContent3 = elmLeftMenu.children[2].children[3];
+	var elmDataTab = document.createElement('li');
+	elmDataTab.setAttribute('id', 'data_tab');
+	elmDataTab.setAttribute('data-original-title', '');
+	elmDataTab.setAttribute('title', '');
 
-	var elmDataAnchor = document.createElement('li');
-	elmDataAnchor.innerHTML = '<a id="dataanchor" title="' + elmData + '" href="#">' + elmData + '<span class="menuicon">▼</span></a>';
+	var elmDataDiv = document.createElement('div');
+	elmDataDiv.setAttribute('class', 'dropdown data_menu');
 
-	elmTabNav.appendChild(elmDataAnchor);
+	var elmDataA = document.createElement('a');
+	elmDataA.setAttribute('id', 'dataanchor');
+	elmDataA.setAttribute('class', 'tab llz object');
+	elmDataA.setAttribute('href', '#');
+	elmDataA.innerHTML = elmLeftMenu.children[2].firstElementChild.innerHTML;
+	elmDataDiv.appendChild(elmDataA);
 
-	var elmDataMenu = document.createElement('div');
-	elmDataMenu.id = 'datamenu';
-	elmDataMenu.className = 'menu';
-	elmDataMenu.appendChild(elmDataMenuContent1);
-	elmDataMenu.appendChild(elmDataMenuContent2);
-	elmDataMenu.appendChild(elmDataMenuContent3);
+	var elmDataCaret = document.createElement('a');
+	elmDataCaret.setAttribute('class', 'dropdown-toggle');
+	elmDataCaret.setAttribute('href', '#');
+	elmDataCaret.setAttribute('data-toggle', 'dropdown');
+	elmDataCaret.innerHTML = '<b class="caret"></b>';
+	elmDataDiv.appendChild(elmDataCaret);
 
-	var elmEditMenu = document.getElementById('editmenu');
-	if (!elmEditMenu) { return; }
+	var elmDataMenuUl = document.createElement('ul');
+	elmDataMenuUl.setAttribute('class', 'dropdown-menu');
+	elmDataMenuUl.appendChild(elmLeftMenu.children[2].children[2].firstElementChild);
+	elmDataMenuUl.appendChild(elmLeftMenu.children[2].children[3].firstElementChild);
+	elmDataMenuUl.appendChild(elmLeftMenu.children[2].children[1].firstElementChild);
+	elmDataDiv.appendChild(elmDataMenuUl);
 
-	elmEditMenu.parentNode.insertBefore(elmDataMenu, elmEditMenu.nextSibling);
-
-	var elmJavaScript = document.createElement('script');
-	elmJavaScript.type = 'text/javascript';
-	elmJavaScript.innerHTML = 'createMenu("dataanchor", "datamenu", "left");';
-
-	elmDataMenu.parentNode.insertBefore(elmJavaScript, elmDataMenu.nextSibling);
+	elmDataTab.appendChild(elmDataDiv);
+	elmTabNav.appendChild(elmDataTab);
 }
 
 function findAndFixCommunity() {
-	var elmCommunity = elmLeftMenu.children[1].firstElementChild.innerHTML;
-	var elmCommunityMenuContent = elmLeftMenu.children[1].lastElementChild;
+	var elmCommunityTab = document.createElement('li');
+	elmCommunityTab.setAttribute('id', 'community_tab');
+	elmCommunityTab.setAttribute('data-original-title', '');
+	elmCommunityTab.setAttribute('title', '');
 
-	var elmCommunityAnchor = document.createElement('li');
-	elmCommunityAnchor.innerHTML = '<a id="communityanchor" title="' + elmCommunity + '" href="#">' + elmCommunity + '<span class="menuicon">▼</span></a>';
+	var elmCommunityDiv = document.createElement('div');
+	elmCommunityDiv.setAttribute('class', 'dropdown community_menu');
 
-	elmTabNav.appendChild(elmCommunityAnchor);
+	var elmCommunityA = document.createElement('a');
+	elmCommunityA.setAttribute('id', 'communityanchor');
+	elmCommunityA.setAttribute('class', 'tab llz object');
+	elmCommunityA.setAttribute('href', '#');
+	elmCommunityA.innerHTML = elmLeftMenu.children[1].firstElementChild.innerHTML;
+	elmCommunityDiv.appendChild(elmCommunityA);
 
-	var elmCommunityMenu = document.createElement('div');
-	elmCommunityMenu.id = 'communitymenu';
-	elmCommunityMenu.className = 'menu';
-	elmCommunityMenu.appendChild(elmCommunityMenuContent);
+	var elmCommunityCaret = document.createElement('a');
+	elmCommunityCaret.setAttribute('class', 'dropdown-toggle');
+	elmCommunityCaret.setAttribute('href', '#');
+	elmCommunityCaret.setAttribute('data-toggle', 'dropdown');
+	elmCommunityCaret.innerHTML = '<b class="caret"></b>';
+	elmCommunityDiv.appendChild(elmCommunityCaret);
 
-	var elmEditMenu = document.getElementById('editmenu');
-	if (!elmEditMenu) { return; }
+	var elmCommunityMenuUl = elmLeftMenu.children[1].lastElementChild;
+	elmCommunityMenuUl.setAttribute('class', 'dropdown-menu');
+	elmCommunityDiv.appendChild(elmCommunityMenuUl);
 
-	elmEditMenu.parentNode.insertBefore(elmCommunityMenu, elmEditMenu.nextSibling);
-
-	var elmJavaScript = document.createElement('script');
-	elmJavaScript.type = 'text/javascript';
-	elmJavaScript.innerHTML = 'createMenu("communityanchor", "communitymenu", "left");';
-
-	elmCommunityMenu.parentNode.insertBefore(elmJavaScript, elmCommunityMenu.nextSibling);
+	elmCommunityTab.appendChild(elmCommunityDiv);
+	elmTabNav.appendChild(elmCommunityTab);
 }
 
 function findAndFixHelp() {
-	var elmHelp = elmLeftMenu.children[0].firstElementChild.innerHTML;
-	var elmHelpMenuContent = elmLeftMenu.children[0].lastElementChild;
+	var elmHelpTab = document.createElement('li');
+	elmHelpTab.setAttribute('id', 'help_tab');
+	elmHelpTab.setAttribute('data-original-title', '');
+	elmHelpTab.setAttribute('title', '');
 
-	var elmHelpAnchor = document.createElement('li');
-	elmHelpAnchor.innerHTML = '<a id="helpanchor" title="' + elmHelp + '" href="#">' + elmHelp + '<span class="menuicon">▼</span></a>';
+	var elmHelpDiv = document.createElement('div');
+	elmHelpDiv.setAttribute('class', 'dropdown help_menu');
 
-	elmTabNav.appendChild(elmHelpAnchor);
+	var elmHelpA = document.createElement('a');
+	elmHelpA.setAttribute('id', 'helpanchor');
+	elmHelpA.setAttribute('class', 'tab llz object');
+	elmHelpA.setAttribute('href', '#');
+	elmHelpA.innerHTML = elmLeftMenu.children[0].firstElementChild.innerHTML;
+	elmHelpDiv.appendChild(elmHelpA);
 
-	var elmHelpMenu = document.createElement('div');
-	elmHelpMenu.id = 'helpmenu';
-	elmHelpMenu.className = 'menu';
-	elmHelpMenu.appendChild(elmHelpMenuContent);
+	var elmHelpCaret = document.createElement('a');
+	elmHelpCaret.setAttribute('class', 'dropdown-toggle');
+	elmHelpCaret.setAttribute('href', '#');
+	elmHelpCaret.setAttribute('data-toggle', 'dropdown');
+	elmHelpCaret.innerHTML = '<b class="caret"></b>';
+	elmHelpDiv.appendChild(elmHelpCaret);
 
-	var elmEditMenu = document.getElementById('editmenu');
-	if (!elmEditMenu) { return; }
+	var elmHelpMenuUl = elmLeftMenu.children[0].lastElementChild;
+	elmHelpMenuUl.setAttribute('class', 'dropdown-menu');
+	elmHelpDiv.appendChild(elmHelpMenuUl);
 
-	elmEditMenu.parentNode.insertBefore(elmHelpMenu, elmEditMenu.nextSibling);
-
-	var elmJavaScript = document.createElement('script');
-	elmJavaScript.type = 'text/javascript';
-	elmJavaScript.innerHTML = 'createMenu("helpanchor", "helpmenu", "left");';
-
-	elmHelpMenu.parentNode.insertBefore(elmJavaScript, elmHelpMenu.nextSibling);
+	elmHelpTab.appendChild(elmHelpDiv);
+	elmTabNav.appendChild(elmHelpTab);
 }
 
 function removeLeftMenu() {

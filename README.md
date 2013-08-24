@@ -34,7 +34,7 @@ and the script will start
 ## ToDo
 
 * Display trace labels as part of the page
-* The right tiles don't load in browser Opera/Chrome
+* The right tiles don't load in browser Chrome
 * Re-write script using JQuery
 
 Enjoy!
