@@ -1,11 +1,16 @@
 
 # OpenStreetMap Clean UI
 
-![screenshot](https://github.com/51114u9/osm-clean-ui/raw/master/screenshot.jpg)
+![screenshot](https://github.com/51114u9/osm-clean-ui/raw/master/screenshot1.jpg)
 
 ## Description
 
-Remove unnecessary elements and modernize UI on OpenStreetMap.
+Maximizes the map with a new layout on page OpenStreetMap.org. Includes
+improvements in:
+
+* A floating panel (located in the lower left corner) to search
+* Tags for GPS traces as head of the table on page "GPS traces"
+* And more...
 
 ## Requirements
 
@@ -33,9 +38,22 @@ and the script will start
 
 ## ToDo
 
-* Display trace labels as part of the page
 * The right tiles don't load in browser Chrome
 * Re-write script using JQuery
+
+## Screenshots
+
+Public GPS Traces:
+
+![screenshot](https://github.com/51114u9/osm-clean-ui/raw/master/screenshot2.jpg)
+
+User's diaries:
+
+![screenshot](https://github.com/51114u9/osm-clean-ui/raw/master/screenshot3.jpg)
+
+Changesets:
+
+![screenshot](https://github.com/51114u9/osm-clean-ui/raw/master/screenshot4.jpg)
 
 Enjoy!
 

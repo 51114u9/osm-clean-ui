@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name		OpenStreetMap Clean UI
 // @namespace	http://userscripts.org/users/510421
-// @description	Remove unnecessary elements and modernize UI on OpenStreetMap
+// @description	Maximizes the map with a new layout on page OpenStreetMap.org
 
 // @include		http://www.openstreetmap.org/*
 // @include		https://www.openstreetmap.org/login*
@@ -12,15 +12,15 @@
 // @include		https://openstreetmap.org/user*
 
 // @license		BSD License; http://www.opensource.org/licenses/bsd-license.php
-// @version		0.2.7
+// @version		0.3.0
 
 // ==/UserScript==
 
 // Declare globals
 var elmLeft;
+var elmOptionalBox;
 var elmLeftMenu;
 var elmTabNav;
-var elmSearchBox;
 
 // Load prerequisites
 loadGlobalCSS();
@@ -28,14 +28,13 @@ loadPrintCSS();
 
 // Execute
 findMenus();
-findAndFixSearch();
+findAndFixOptionalBox();
 findAndFixData();
 findAndFixCommunity();
 findAndFixHelp();
 removeLeftMenu();
 
 // Functions
-
 function addGlobalStyle(device, css) {
 	var elmHead, elmStyle;
 	elmHead = document.getElementsByTagName('head')[0];
@@ -68,7 +67,7 @@ function loadGlobalCSS() {
 		'#changeset_list_map_wrapper.scrolled #changeset_list_map { margin-left: 0px !important; } ' +
 		'.sidebar_heading { z-index: inherit !important; } ' +
 		'#trace_description, #trace_tagstring { width: 50% !important; } ' +
-		'.diary_post { max-width: 100% !important; } ' +
+		'.diary_post, .diary_entry .comments, .hide_unless_logged_in { margin: 0px auto !important; max-width: 80% !important; } ' +
 		'#diary_entry_title { width: 50% !important; } ' +
 		'#message_title { width: 50% !important; }'
 	);
@@ -89,17 +88,37 @@ function findMenus() {
 	if (!elmTabNav) { return; }
 }
 
-function findAndFixSearch() {
-	for(i = 0; i < elmLeft.childNodes.length; i++) {
-		if(elmLeft.childNodes[i].className == 'optionalbox') {
-			elmSearchBox = elmLeft.childNodes[i];
+function findAndFixOptionalBox() {
+	for (i = 0; i < elmLeft.childElementCount; i++) {
+		if (elmLeft.childNodes[i].className == 'optionalbox') {
+			elmOptionalBox = elmLeft.childNodes[i];
 			break;
 		}
 	}
 
-	if (elmSearchBox) {
-		elmSearchBox.setAttribute('id','searchbox');
-		elmSearchBox.removeChild(elmSearchBox.lastElementChild);
+	if (elmOptionalBox) {
+		if (elmOptionalBox.firstElementChild.className == 'search_container') {
+			elmOptionalBox.setAttribute('id','searchbox');
+			elmOptionalBox.removeChild(elmOptionalBox.lastElementChild);
+ 
+		} else {
+			var elmTable = document.getElementById('trace_list');
+
+			if (elmTable) {
+				var elmTH1 = elmTable.firstElementChild.firstElementChild.children[0];
+				var elmTH2 = elmTable.firstElementChild.firstElementChild.children[1];
+				var elmText = '';
+
+				elmTH1.innerHTML = elmOptionalBox.firstElementChild.innerHTML;
+
+				for(i = 1; i < elmOptionalBox.childElementCount; i = i + 2) {
+					if (i > 1) { elmText = elmText + ' | '; }
+					elmText = elmText + elmOptionalBox.children[i].outerHTML;
+				}
+
+				elmTH2.innerHTML = elmText;
+			}
+		}
 	}
 }
 
@@ -200,6 +219,6 @@ function findAndFixHelp() {
 }
 
 function removeLeftMenu() {
-	if (elmSearchBox && (getComputedStyle(elmLeft, '').display != 'none') && (elmSearchBox.firstElementChild.nodeName != 'H4')) { elmLeft.parentNode.replaceChild(elmSearchBox, elmLeft); }
+	if (elmOptionalBox && (getComputedStyle(elmLeft, '').display != 'none') && (elmOptionalBox.firstElementChild.nodeName != 'H4')) { elmLeft.parentNode.replaceChild(elmOptionalBox, elmLeft); }
 	else { elmLeft.parentNode.removeChild(elmLeft); }
 }
