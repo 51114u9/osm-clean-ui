@@ -100,7 +100,8 @@ function findAndFixOptionalBox() {
 		if (elmOptionalBox.firstElementChild.className == 'search_container') {
 			elmOptionalBox.setAttribute('id','searchbox');
 			elmOptionalBox.removeChild(elmOptionalBox.lastElementChild);
- 
+			document.getElementById('query').removeAttribute('autofocus');
+			document.activeElement.blur();
 		} else {
 			var elmTable = document.getElementById('trace_list');
 
