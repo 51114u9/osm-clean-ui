@@ -5,12 +5,13 @@
 
 ## Description
 
-Maximizes the map with a new layout on page OpenStreetMap.org. Includes
-improvements in:
+Maximizes the map with a new layout on page OpenStreetMap.org. Some features:
 
-* A floating panel (located in the lower left corner) to search
-* Tags for GPS traces as head of the table on page "GPS traces"
-* And more...
+* Menu options more compact & modern using BootStrap
+* Floating panel for searches located in the lower left corner
+* Highlighting counters for message, editions, gps traces & user diaries
+* Tags for "GPS traces" as head of the table on page "GPS Traces"
+* The user diaries are more readable
 
 ## Requirements
 
