@@ -33,6 +33,7 @@ findAndFixData();
 findAndFixCommunity();
 findAndFixHelp();
 removeLeftMenu();
+highlightNewMessages();
 
 // Functions
 function addGlobalStyle(device, css) {
@@ -60,7 +61,6 @@ function loadGlobalCSS() {
 		'ul.secondary-actions li { margin: 0px !important; padding: 0px 2px !important; } ' +
 		'ul#greeting a, ul#greeting a:link, ul#greeting a:visited { color: #333 !important; float: left !important; font-weight: bold !important; margin-right: 0px !important; padding: 3px 5px !important; } ' +
 		'ul#greeting a:link:hover, ul#greeting a:visited:hover { color: #000 !important; } ' +
-		'.count-number { background: none repeat scroll 0 0 #CB4437 !important; color: #FFFFFF !important; } ' +
 		'.wrapper { margin: 30px 0 0 !important; } ' +
 		'#content { left: 0px !important; } ' +
 		'#changeset_list_map_wrapper.scrolled { top: 20px !important; } ' +
@@ -71,6 +71,14 @@ function loadGlobalCSS() {
 		'#diary_entry_title { width: 50% !important; } ' +
 		'#message_title { width: 50% !important; }'
 	);
+}
+
+function highlightNewMessages() {
+            if (document.getElementById('inboxanchor').children[1].innerHTML != '0') {
+            addGlobalStyle('screen',
+                    '.count-number { background: #CB4437 !important; color: #FFFFFF !important; }'
+            );
+        }
 }
 
 function loadPrintCSS() {
