@@ -33,7 +33,7 @@ findAndFixData();
 findAndFixCommunity();
 findAndFixHelp();
 removeLeftMenu();
-highlightNewMessages();
+highlightCounters();
 
 // Functions
 function addGlobalStyle(device, css) {
@@ -73,14 +73,6 @@ function loadGlobalCSS() {
 	);
 }
 
-function highlightNewMessages() {
-            if (document.getElementById('inboxanchor').children[1].innerHTML != '0') {
-            addGlobalStyle('screen',
-                    '.count-number { background: #CB4437 !important; color: #FFFFFF !important; }'
-            );
-        }
-}
-
 function loadPrintCSS() {
 	addGlobalStyle('print', '#searchbox { display: none !important; }');
 }
@@ -108,7 +100,7 @@ function findAndFixOptionalBox() {
 		if (elmOptionalBox.firstElementChild.className == 'search_container') {
 			elmOptionalBox.setAttribute('id','searchbox');
 			elmOptionalBox.removeChild(elmOptionalBox.lastElementChild);
- 
+
 		} else {
 			var elmTable = document.getElementById('trace_list');
 
@@ -229,4 +221,31 @@ function findAndFixHelp() {
 function removeLeftMenu() {
 	if (elmOptionalBox && (getComputedStyle(elmLeft, '').display != 'none') && (elmOptionalBox.firstElementChild.nodeName != 'H4')) { elmLeft.parentNode.replaceChild(elmOptionalBox, elmLeft); }
 	else { elmLeft.parentNode.removeChild(elmLeft); }
+}
+
+function highlightCounters() {
+	var cssElem = '';
+
+	var inboxAnchor = document.getElementById('inboxanchor');
+	if (inboxAnchor.children[1].innerHTML != '0') {
+		cssElem = '#inboxanchor.count-number, #greeting > ul > li > a > span.count-number';
+	}
+
+	var userInfo = document.getElementById('userinformation');
+	if (userInfo.children[1].children[1].children[0].innerHTML != '0') {
+		cssElem = cssElem + ', #userinformation > div > ul > li:nth-child(1) > span.count-number';
+	}
+	if (userInfo.children[1].children[1].children[2].innerHTML != '0') {
+		cssElem = cssElem + ', #userinformation > div > ul > li:nth-child(3) > span.count-number';
+	}
+	if (userInfo.children[1].children[1].children[3].innerHTML != '0') {
+		cssElem = cssElem + ', #userinformation > div > ul > li:nth-child(4) > span.count-number';
+	}
+	if (userInfo.children[1].children[1].children[4].innerHTML != '0') {
+		cssElem = cssElem + ', #userinformation > div > ul > li:nth-child(5) > span.count-number';
+	}
+
+	if (cssElem != '') {
+		addGlobalStyle('screen', cssElem + ' { background: #CB4437 !important; color: #FFFFFF !important; } ');
+	}
 }
