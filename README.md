@@ -5,11 +5,14 @@
 
 ## Description
 
-Maximizes the map with a new layout on page OpenStreetMap.org. Some features:
+Maximizes the map with a new layout on page OpenStreetMap.org.
 
-* Menu options more compact & modern using BootStrap
+## Features
+
+* Menu options more compact & modern using BootStrap library
 * Floating panel for searches located in the lower left corner
-* Highlighting counters for message, editions, gps traces & user diaries
+* Support [Vimperator](https://addons.mozilla.org/en-US/firefox/addon/vimperator/) addon for Firefox/[Vrome](https://github.com/jinzhu/vrome) extension for Chrome
+* Highlighting counters for inbox messages, editions, gps traces & user diaries
 * Tags for "GPS traces" as head of the table on page "GPS Traces"
 * The user diaries are more readable
 
@@ -37,9 +40,14 @@ Chrome [TamperMonkey](http://bit.ly/19r15Yf) or Safari ???
 Reload the website [OpenStreetMap.org](http://www.openstreetmap.org/)
 and the script will start
 
+## Contributors
+
+* Martin Raifer aka [@tyrasd](https://github.com/tyrasd)
+* Sven Karsten Greiner aka [@SammysHP](https://github.com/SammysHP)
+
 ## ToDo
 
-* The right tiles don't load in browser Chrome
+* The right tiles don't load in browser Opera/Chrome
 * Re-write script using JQuery
 
 ## Screenshots
