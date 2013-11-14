@@ -69,7 +69,8 @@ function loadGlobalCSS() {
 		'#trace_description, #trace_tagstring { width: 50% !important; } ' +
 		'.diary_post, .diary_entry .comments, .hide_unless_logged_in { margin: 0px auto !important; max-width: 80% !important; } ' +
 		'#diary_entry_title { width: 50% !important; } ' +
-		'#message_title { width: 50% !important; }'
+		'#message_title { width: 50% !important; } ' +
+		'.count-number-highlight { background: #CB4437 !important; color: #FFFFFF !important; }'
 	);
 }
 
@@ -224,28 +225,11 @@ function removeLeftMenu() {
 }
 
 function highlightCounters() {
-	var cssElem = '';
+	var e = document.getElementsByClassName('count-number');
 
-	var inboxAnchor = document.getElementById('inboxanchor');
-	if (inboxAnchor.children[1].innerHTML != '0') {
-		cssElem = '#inboxanchor.count-number, #greeting > ul > li > a > span.count-number';
-	}
-
-	var userInfo = document.getElementById('userinformation');
-	if (userInfo.children[1].children[1].children[0].innerHTML != '0') {
-		cssElem = cssElem + ', #userinformation > div > ul > li:nth-child(1) > span.count-number';
-	}
-	if (userInfo.children[1].children[1].children[2].innerHTML != '0') {
-		cssElem = cssElem + ', #userinformation > div > ul > li:nth-child(3) > span.count-number';
-	}
-	if (userInfo.children[1].children[1].children[3].innerHTML != '0') {
-		cssElem = cssElem + ', #userinformation > div > ul > li:nth-child(4) > span.count-number';
-	}
-	if (userInfo.children[1].children[1].children[4].innerHTML != '0') {
-		cssElem = cssElem + ', #userinformation > div > ul > li:nth-child(5) > span.count-number';
-	}
-
-	if (cssElem != '') {
-		addGlobalStyle('screen', cssElem + ' { background: #CB4437 !important; color: #FFFFFF !important; } ');
+	for (var i=0; i < e.length; i++) {
+		if ((e[i].children.length == 0 && e[i].innerHTML != '0') || (e[i].children.length == 2 && e[i].children[1].innerHTML != '0')) {
+			e[i].className = e[i].className + ' count-number-highlight';
+		}
 	}
 }
