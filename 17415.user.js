@@ -54,7 +54,7 @@ function loadGlobalCSS() {
 		'#search_field input[type="submit"] { margin-top: 2px !important; height: 20px !important; width: 15px !important; } ' +
 		'#search_field input[type="text"] { background: rgba(238, 238, 236, 0.8); border: 0 !important; border-radius: 2px !important; -webkit-border-radius: 2px !important; } ' +
 		'#search_field input[type="text"]:focus { outline: 0; box-shadow: 0 0 2px rgba(0, 0, 0, 0.8) inset; } ' +
-		'#query { width: 200px !important; height: 30px !important; } ' +
+		'#query { width: 200px !important; height: 30px !important; padding-right: 22px !important; } ' +
 		'#top-bar { background: rgba(255, 255, 255, 0.8); } ' +
 		'.changeset #top-bar, .browse #top-bar, .site-copyright #top-bar, .trace #top-bar, .diary_entry #top-bar, .user #top-bar, .notes #top-bar, .oauth_clients #top-bar, .message #top-bar { left: 0; position: fixed; right: 0; top: 0; } ' +
 		'ul#greeting { margin-right: 0px !important; padding-top: 0px !important; } ' +
