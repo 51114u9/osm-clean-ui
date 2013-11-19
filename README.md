@@ -44,6 +44,7 @@ and the script will start
 
 * Martin Raifer aka [@tyrasd](https://github.com/tyrasd)
 * Sven Karsten Greiner aka [@SammysHP](https://github.com/SammysHP)
+* Thomas Pointhuber aka [@pointhi](https://github.com/pointhi)
 
 ## ToDo
 

@@ -12,7 +12,7 @@
 // @include		https://openstreetmap.org/user*
 
 // @license		BSD License; http://www.opensource.org/licenses/bsd-license.php
-// @version		0.3.1
+// @version		0.3.2
 
 // ==/UserScript==
 
